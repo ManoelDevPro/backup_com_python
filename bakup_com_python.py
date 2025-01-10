@@ -15,13 +15,13 @@ lista_arquivos = os.listdir(nome_da_pasta_selecionada)
 nome_pasta_backup = "backup"  #cria a pasta backup
 nome_completo_pasta_backup = f"{nome_da_pasta_selecionada}/{nome_pasta_backup}" 
 if not os.path.exists(nome_completo_pasta_backup):#
-    os.mkdir(nome_completo_pasta_backup)
+    os.mkdir(nome_completo_pasta_backup) # cria a pasta backup
 
 data_atual = datetime.datetime.today().strftime("%Y-%m-%d   %H%M%S")
 print(data_atual)
 
 for arquivo in lista_arquivos:
-    nome_completo_arquivo = f"{nome_da_pasta_selecionada}/{arquivo}"
+    nome_completo_arquivo = f"{nome_da_pasta_selecionada}/{arquivo}" 
     nome_final_arquivo = f"{nome_completo_pasta_backup}/{data_atual}/{arquivo}"
 
     if not os.path.exists(f"{nome_completo_pasta_backup}/{data_atual}"):#
@@ -29,7 +29,7 @@ for arquivo in lista_arquivos:
 
 
     if "." in arquivo: # copia arquivos, pois todo arquivo termina com um ponto
-        shutil.copy2(nome_completo_arquivo,nome_final_arquivo)
+        shutil.copy2(nome_completo_arquivo,nome_final_arquivo)# copia o arquivo para nome_final_arquivo
     elif not "backup" in arquivo: # copia pastas, neste caso nao vai copiar a msma pasta criada "backup"
         shutil.copytree(nome_completo_arquivo,nome_final_arquivo)
 
